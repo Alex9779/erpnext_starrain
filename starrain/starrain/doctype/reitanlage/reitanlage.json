@@ -1,0 +1,568 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2026-05-02 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bezeichnung",
+  "typ",
+  "adresse",
+  "cb_top",
+  "besitzer",
+  "gepachtet",
+  "paechter",
+  "section_masse",
+  "laenge",
+  "breite",
+  "cb_masse",
+  "bodenbelag",
+  "section_halle",
+  "reitflaeche_laenge",
+  "reitflaeche_breite",
+  "bauart",
+  "baujahr",
+  "cb_halle",
+  "hersteller",
+  "firsthoehe",
+  "dachneigung",
+  "section_lichtsituation",
+  "lichtsituation",
+  "section_fuehranlage",
+  "ueberdacht",
+  "section_wasser",
+  "hat_wasserversorgung",
+  "section_wasser_details",
+  "wasserversorgung_typ",
+  "dn",
+  "fliessdruck",
+  "filter_notwendig",
+  "section_zisterne",
+  "zisterne",
+  "zisterne_groesse",
+  "section_pumpe",
+  "pumpe_notwendig",
+  "section_pumpe_details",
+  "pumpe_typ",
+  "pumpe_hersteller",
+  "cb_pumpe",
+  "pumpe_foerdermenge",
+  "pumpe_druck",
+  "section_pumpe_elektro",
+  "pumpe_spannung",
+  "pumpe_frequenzumrichter",
+  "pumpe_sanftanlauf",
+  "cb_pumpe_elektro",
+  "pumpe_leistung",
+  "section_beregnung",
+  "beregnung_vorhanden",
+  "section_beregnung_details",
+  "beregnung_typ",
+  "beregnung_hersteller",
+  "cb_beregnung",
+  "beregnung_baujahr",
+  "section_frostentleerung",
+  "frostentleerung_gewuenscht",
+  "frostentleerung_vorhanden",
+  "section_frostentleerung_details",
+  "frostentleerung_art",
+  "frostentleerung_auslauf",
+  "cb_frostentleerung",
+  "frostentleerung_kugelhahn",
+  "section_app_steuerung",
+  "app_steuerung_gewuenscht",
+  "app_steuerung",
+  "section_app_details",
+  "steuerung",
+  "internet_erforderlich",
+  "wlan_typ",
+  "wlan_ssid",
+  "wlan_passwort",
+  "cb_app",
+  "accesspoint",
+  "ap_benutzer",
+  "ap_passwort",
+  "link_local_eingerichtet",
+  "section_sonstiges",
+  "besonderheiten",
+  "cb_sonstiges",
+  "anmerkungen"
+ ],
+ "fields": [
+  {
+   "fieldname": "bezeichnung",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "typ",
+   "fieldtype": "Select",
+   "label": "Typ",
+   "options": "Reithalle\nReitplatz\nLongierhalle\nFühranlage"
+  },
+  {   "fieldname": "adresse",
+   "fieldtype": "Link",
+   "label": "Adresse",
+   "options": "Address"
+  },
+  {
+   "fieldname": "cb_top",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "besitzer",
+   "fieldtype": "Link",
+   "label": "Besitzer",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "gepachtet",
+   "fieldtype": "Check",
+   "label": "Gepachtet"
+  },
+  {
+   "depends_on": "eval:doc.gepachtet==1",
+   "fieldname": "paechter",
+   "fieldtype": "Link",
+   "label": "Pächter",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "section_masse",
+   "fieldtype": "Section Break",
+   "label": "Details der Anlage"
+  },
+  {
+   "fieldname": "laenge",
+   "fieldtype": "Float",
+   "label": "Länge (m)"
+  },
+  {
+   "fieldname": "breite",
+   "fieldtype": "Float",
+   "label": "Breite (m)"
+  },
+  {
+   "fieldname": "cb_masse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bodenbelag",
+   "fieldtype": "Link",
+   "label": "Bodenbelag",
+   "options": "Bodenbelag"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "section_halle",
+   "fieldtype": "Section Break",
+   "label": "Hallen-Details"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "reitflaeche_laenge",
+   "fieldtype": "Float",
+   "label": "Reitfläche Länge (m)"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "reitflaeche_breite",
+   "fieldtype": "Float",
+   "label": "Reitfläche Breite (m)"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "bauart",
+   "fieldtype": "Link",
+   "label": "Bauart",
+   "options": "Bauart"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "baujahr",
+   "fieldtype": "Data",
+   "label": "Baujahr"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "cb_halle",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "hersteller",
+   "fieldtype": "Data",
+   "label": "Hersteller"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "firsthoehe",
+   "fieldtype": "Float",
+   "label": "Firsthöhe (m)"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "dachneigung",
+   "fieldtype": "Float",
+   "label": "Dachneigung (°)"
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "section_lichtsituation",
+   "fieldtype": "Section Break",
+   "label": ""
+  },
+  {
+   "depends_on": "eval:[\"Reithalle\",\"Longierhalle\"].includes(doc.typ)",
+   "fieldname": "lichtsituation",
+   "fieldtype": "Text Editor",
+   "label": "Lichtsituation"
+  },
+  {
+   "depends_on": "eval:doc.typ===\"Führanlage\"",
+   "fieldname": "section_fuehranlage",
+   "fieldtype": "Section Break",
+   "label": "Führanlage-Details"
+  },
+  {
+   "depends_on": "eval:doc.typ===\"Führanlage\"",
+   "fieldname": "ueberdacht",
+   "fieldtype": "Check",
+   "label": "Überdacht"
+  },
+  {
+   "fieldname": "section_wasser",
+   "fieldtype": "Section Break",
+   "label": "Wasserquelle"
+  },
+  {
+   "fieldname": "hat_wasserversorgung",
+   "fieldtype": "Check",
+   "label": "Wasserquelle erschlossen"
+  },
+  {
+   "depends_on": "eval:doc.hat_wasserversorgung==1",
+   "fieldname": "section_wasser_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "wasserversorgung_typ",
+   "fieldtype": "Select",
+   "label": "Typ",
+   "options": "\nNetzwasser\nBrunnenwasser\nRegenwasser\nOberflächenwasser"
+  },
+  {
+   "depends_on": "eval:doc.wasserversorgung_typ=='Netzwasser'",
+   "fieldname": "dn",
+   "fieldtype": "Data",
+   "label": "DN (Nenndurchmesser)"
+  },
+  {
+   "depends_on": "eval:doc.wasserversorgung_typ=='Netzwasser'",
+   "fieldname": "fliessdruck",
+   "fieldtype": "Float",
+   "label": "Fließdruck (bar)"
+  },
+  {
+   "fieldname": "filter_notwendig",
+   "fieldtype": "Check",
+   "label": "Filter verbaut"
+  },
+  {
+   "depends_on": "eval:doc.hat_wasserversorgung==1",
+   "fieldname": "section_zisterne",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "zisterne",
+   "fieldtype": "Check",
+   "label": "Zisterne oder Tank verbaut"
+  },
+  {
+   "depends_on": "eval:doc.zisterne==1",
+   "fieldname": "zisterne_groesse",
+   "fieldtype": "Float",
+   "label": "Volumen (m\u00b3)"
+  },
+  {
+   "fieldname": "section_pumpe",
+   "fieldtype": "Section Break",
+   "label": "Pumpe"
+  },
+  {
+   "fieldname": "pumpe_notwendig",
+   "fieldtype": "Check",
+   "label": "Pumpe verbaut"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "section_pumpe_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_typ",
+   "fieldtype": "Select",
+   "label": "Typ",
+   "options": "\nKreiselpumpe\nTauchpumpe\nDruckerhöhungsanlage\nSonstige"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_hersteller",
+   "fieldtype": "Data",
+   "label": "Hersteller"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "cb_pumpe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_foerdermenge",
+   "fieldtype": "Float",
+   "label": "Fördermenge (m³/h)"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_druck",
+   "fieldtype": "Float",
+   "label": "Druck (bar)"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "section_pumpe_elektro",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_spannung",
+   "fieldtype": "Select",
+   "label": "Spannung",
+   "options": "\n230V\n400V"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_frequenzumrichter",
+   "fieldtype": "Check",
+   "label": "Frequenzumrichter"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_sanftanlauf",
+   "fieldtype": "Check",
+   "label": "Sanftanlauf"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "cb_pumpe_elektro",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.pumpe_notwendig==1",
+   "fieldname": "pumpe_leistung",
+   "fieldtype": "Float",
+   "label": "Leistung (kW)"
+  },
+  {
+   "fieldname": "section_beregnung",
+   "fieldtype": "Section Break",
+   "label": "Beregnung"
+  },
+  {
+   "fieldname": "beregnung_vorhanden",
+   "fieldtype": "Check",
+   "label": "Beregnung verbaut"
+  },
+  {
+   "depends_on": "eval:doc.beregnung_vorhanden==1",
+   "fieldname": "section_beregnung_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "beregnung_typ",
+   "fieldtype": "Data",
+   "label": "Typ"
+  },
+  {
+   "fieldname": "beregnung_hersteller",
+   "fieldtype": "Data",
+   "label": "Hersteller"
+  },
+  {
+   "fieldname": "cb_beregnung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beregnung_baujahr",
+   "fieldtype": "Data",
+   "label": "Baujahr"
+  },
+  {
+   "fieldname": "section_app_steuerung",
+   "fieldtype": "Section Break",
+   "label": "App-Steuerung"
+  },
+  {
+   "fieldname": "app_steuerung_gewuenscht",
+   "fieldtype": "Check",
+   "label": "App-Steuerung gewünscht"
+  },
+  {
+   "fieldname": "app_steuerung",
+   "fieldtype": "Check",
+   "label": "App-Steuerung verbaut"
+  },
+  {
+   "depends_on": "eval:doc.app_steuerung==1",
+   "fieldname": "section_app_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "steuerung",
+   "fieldtype": "Link",
+   "label": "Steuerung",
+   "options": "Steuerung"
+  },
+  {
+   "fieldname": "internet_erforderlich",
+   "fieldtype": "Check",
+   "label": "Internet erforderlich"
+  },
+  {
+   "fieldname": "wlan_typ",
+   "fieldtype": "Select",
+   "label": "WLAN",
+   "options": "\nEigen\nStarRain"
+  },
+  {
+   "fieldname": "wlan_ssid",
+   "fieldtype": "Data",
+   "label": "SSID"
+  },
+  {
+   "fieldname": "wlan_passwort",
+   "fieldtype": "Password",
+   "label": "WLAN-Passwort"
+  },
+  {
+   "fieldname": "cb_app",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accesspoint",
+   "fieldtype": "Link",
+   "label": "Access-Point",
+   "options": "Accesspoint"
+  },
+  {
+   "fieldname": "ap_benutzer",
+   "fieldtype": "Data",
+   "label": "Access-Point Benutzer"
+  },
+  {
+   "fieldname": "ap_passwort",
+   "fieldtype": "Password",
+   "label": "Access-Point Passwort"
+  },
+  {
+   "fieldname": "link_local_eingerichtet",
+   "fieldtype": "Check",
+   "label": "Link Local eingerichtet"
+  },
+  {
+   "fieldname": "section_frostentleerung",
+   "fieldtype": "Section Break",
+   "label": "Frostentleerung"
+  },
+  {
+   "fieldname": "frostentleerung_gewuenscht",
+   "fieldtype": "Check",
+   "label": "Automatische Frostentleerung gewünscht"
+  },
+  {
+   "fieldname": "frostentleerung_vorhanden",
+   "fieldtype": "Check",
+   "label": "Frostentleerung verbaut"
+  },
+  {
+   "depends_on": "eval:doc.frostentleerung_vorhanden==1",
+   "fieldname": "section_frostentleerung_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.frostentleerung_vorhanden==1",
+   "fieldname": "frostentleerung_art",
+   "fieldtype": "Select",
+   "label": "Art der Frostentleerung",
+   "options": "\nvollautomatisch\nteilautomatisch\nmanuell"
+  },
+  {
+   "depends_on": "eval:doc.frostentleerung_vorhanden==1",
+   "fieldname": "frostentleerung_auslauf",
+   "fieldtype": "Select",
+   "label": "Auslaufoption",
+   "options": "\nBypass\nfreier Auslauf\nDruckluft"
+  },
+  {
+   "fieldname": "cb_frostentleerung",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:[\"vollautomatisch\",\"teilautomatisch\"].includes(doc.frostentleerung_art)",
+   "fieldname": "frostentleerung_kugelhahn",
+   "fieldtype": "Link",
+   "label": "Verbauter Kugelhahn",
+   "options": "Item"
+  },
+  {
+   "fieldname": "section_sonstiges",
+   "fieldtype": "Section Break",
+   "label": "Sonstiges"
+  },
+  {
+   "fieldname": "besonderheiten",
+   "fieldtype": "Text Editor",
+   "label": "Besonderheiten"
+  },
+  {
+   "fieldname": "cb_sonstiges",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "anmerkungen",
+   "fieldtype": "Text Editor",
+   "label": "Anmerkungen"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Starrain",
+ "name": "Reitanlage",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "show_title_field_in_link": 1,
+ "title_field": "bezeichnung",
+ "track_changes": 1
+}

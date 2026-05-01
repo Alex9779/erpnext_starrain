@@ -1,0 +1,78 @@
+[
+ {
+  "doctype": "Custom Field",
+  "dt": "Lead",
+  "fieldname": "reitanlagen_tab",
+  "fieldtype": "Tab Break",
+  "insert_after": "notes",
+  "label": "Reitanlagen",
+  "name": "Lead-reitanlagen_tab"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Lead",
+  "fieldname": "reitanlagen",
+  "fieldtype": "Table",
+  "insert_after": "reitanlagen_tab",
+  "label": "Reitanlagen",
+  "name": "Lead-reitanlagen",
+  "options": "Reitanlage Eintrag"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Opportunity",
+  "fieldname": "reitanlagen_tab",
+  "fieldtype": "Tab Break",
+  "insert_after": "notes",
+  "label": "Reitanlagen",
+  "name": "Opportunity-reitanlagen_tab"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Opportunity",
+  "fieldname": "reitanlagen",
+  "fieldtype": "Table",
+  "insert_after": "reitanlagen_tab",
+  "label": "Reitanlagen",
+  "name": "Opportunity-reitanlagen",
+  "options": "Reitanlage Eintrag"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Customer",
+  "fieldname": "reitanlagen_tab",
+  "fieldtype": "Tab Break",
+  "insert_after": "portal_users",
+  "label": "Reitanlagen",
+  "name": "Customer-reitanlagen_tab"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Customer",
+  "fieldname": "reitanlagen",
+  "fieldtype": "Table",
+  "insert_after": "reitanlagen_tab",
+  "label": "Reitanlagen",
+  "name": "Customer-reitanlagen",
+  "options": "Reitanlage Eintrag"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Prospect",
+  "fieldname": "reitanlagen_tab",
+  "fieldtype": "Tab Break",
+  "insert_after": "notes",
+  "label": "Reitanlagen",
+  "name": "Prospect-reitanlagen_tab"
+ },
+ {
+  "doctype": "Custom Field",
+  "dt": "Prospect",
+  "fieldname": "reitanlagen",
+  "fieldtype": "Table",
+  "insert_after": "reitanlagen_tab",
+  "label": "Reitanlagen",
+  "name": "Prospect-reitanlagen",
+  "options": "Reitanlage Eintrag"
+ }
+]

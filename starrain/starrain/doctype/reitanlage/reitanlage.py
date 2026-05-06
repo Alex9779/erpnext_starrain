@@ -4,6 +4,7 @@
 import re
 
 import frappe
+from frappe.contacts.address_and_contact import set_link_title
 from frappe.model.document import Document
 
 _BAUJAHR_PATTERN = re.compile(r"^(?:(?:0?[1-9]|1[0-2])/)?\d{4}$")
@@ -28,3 +29,4 @@ class Reitanlage(Document):
 	def validate(self):
 		_validate_baujahr(self.baujahr, frappe._("Baujahr"))
 		_validate_baujahr(self.beregnung_baujahr, frappe._("Baujahr (Beregnung)"))
+		set_link_title(self)
